@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/tab_layout_home"
+            android:layout_width="70dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/tab_img_home"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_home" />
+
+            <TextView
+                android:id="@+id/tab_home"
+                android:layout_width="60dp"
+                android:layout_height="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="首页"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tab_layout_happen"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tab_layout_home">
+
+            <ImageView
+                android:id="@+id/tab_img_happen"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_happen" />
+
+            <TextView
+                android:id="@+id/tab_happen"
+                android:layout_width="60dp"
+                android:layout_height="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="动态"
+                android:textSize="15sp"
+                android:textColor="#666363"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tab_new"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="3dp"
+            android:text="新建"
+            android:textSize="20sp"
+            android:textColor="#666363"/>
+
+        <RelativeLayout
+            android:id="@+id/tab_layout_message"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/tab_layout_person">
+
+            <ImageView
+                android:id="@+id/tab_img_message"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_message" />
+
+            <TextView
+                android:id="@+id/tab_message"
+                android:layout_width="60dp"
+                android:layout_height="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="消息"
+                android:textSize="15sp"
+                android:textColor="#666363"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/tab_layout_person"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:id="@+id/tab_img_person"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_person" />
+
+            <TextView
+                android:id="@+id/tab_person"
+                android:layout_width="60dp"
+                android:layout_height="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="个人"
+                android:textSize="15sp"
+                android:textColor="#666363"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>
