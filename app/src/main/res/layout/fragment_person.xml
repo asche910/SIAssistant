@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Person Page"/>
+    <RelativeLayout
+        android:background="@color/hui"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/headportrait"
+            android:src="@drawable/head"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <TextView
+            android:id="@+id/name"
+            android:text="用户—0omkda"
+            android:layout_below="@+id/headportrait"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:layout_height="30dp" />
+        <Button
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colorWhite"
+            android:text="注册"
+            android:id="@+id/register"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_below="@id/name"
+            android:src="@color/huiblack"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/pressbutton1"
+            android:textColor="@color/colorWhite"
+
+            android:layout_weight="1"
+            android:text="进行中"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/pressbutton2"
+            android:text="已完成"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_weight="1"
+            android:text="未完成"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 
 </LinearLayout>
