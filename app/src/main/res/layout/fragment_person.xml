@@ -53,12 +53,17 @@
             android:layout_weight="1"
             android:layout_height="match_parent" />
         <Button
+            android:id="@+id/pressbutton3"
             android:layout_weight="1"
             android:text="未完成"
             android:textColor="@color/colorWhite"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
     </LinearLayout>
+   <fragment
+       android:id="@+id/personselect"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
 
 </LinearLayout>
