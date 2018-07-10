@@ -1,11 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:orientation="vertical">
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Page"/>
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="新建目标"
+        android:textSize="25sp"
+        android:textColor="#7c0ea7"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_home_press"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:hint="赶快输入目标名称名称吧！"
+            android:textColorHint="#0aa31e"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_home_press"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:hint="自定义天数或右方选择"
+            android:textColorHint="#0aa31e"/>
+        <Button
+            android:id="@+id/btn_add_sug"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="推荐天数"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_home_press"/>
+
+       <TextView
+           android:id="@+id/text_add_data"
+           android:layout_width="0dp"
+           android:layout_height="40dp"
+           android:layout_weight="1"
+           android:layout_marginLeft="10dp"
+           android:layout_gravity="center_vertical"
+           android:gravity="center_vertical"
+           android:text="开始日期"
+           android:textSize="15sp"
+           android:textColor="#2e54ec"/>
+
+        <Button
+            android:id="@+id/btn_add_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择日期"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
