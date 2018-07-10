@@ -68,14 +68,22 @@
             android:background="@drawable/ic_home_press"/>
 
        <TextView
-           android:layout_width="wrap_content"
+           android:id="@+id/text_add_data"
+           android:layout_width="0dp"
            android:layout_height="40dp"
+           android:layout_weight="1"
            android:layout_marginLeft="10dp"
            android:layout_gravity="center_vertical"
            android:gravity="center_vertical"
            android:text="开始日期"
            android:textSize="15sp"
            android:textColor="#2e54ec"/>
+
+        <Button
+            android:id="@+id/btn_add_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择日期"/>
 
     </LinearLayout>
 

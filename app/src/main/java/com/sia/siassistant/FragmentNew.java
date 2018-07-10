@@ -10,20 +10,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import static com.sia.siassistant.WheelView.TAG;
 
-public class FragmentNew extends Fragment  implements View.OnClickListener{
+public class FragmentNew extends Fragment  implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
 
 
     private final String[] PLANETS = new String[]{"3天", "7天", "21天", "30天", "100天", "365天", "永久"};
     private int dayIndex = -1;
-    Button btnSug;
+    Button btnSug, btnDate;
     View view;
     WheelView wheelView;
+    TextView textDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +42,11 @@ public class FragmentNew extends Fragment  implements View.OnClickListener{
         super.onActivityCreated(savedInstanceState);
 
         btnSug = getActivity().findViewById(R.id.btn_add_sug);
+        btnDate = getActivity().findViewById(R.id.btn_add_date);
+        textDate = getActivity().findViewById(R.id.text_add_data);
+
         btnSug.setOnClickListener(this);
+        btnDate.setOnClickListener(this);
 
         view = LayoutInflater.from(getActivity()).inflate(R.layout.wheelview, null);
         wheelView = view.findViewById(R.id.wheelView);
@@ -57,6 +67,17 @@ public class FragmentNew extends Fragment  implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.btn_add_date:
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(
+                        this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                datePickerDialog.show(getActivity().getFragmentManager(), "Show");
+
+                break;
             case R.id.btn_add_sug:
                 new AlertDialog.Builder(getActivity())
                         .setTitle("选择天数")
@@ -75,5 +96,28 @@ public class FragmentNew extends Fragment  implements View.OnClickListener{
                         .show();
                 break;
         }
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        Calendar now = Calendar.getInstance();
+        int nowYear = now.get(Calendar.YEAR);
+        int nowMonth = now.get(Calendar.MONTH);
+        int nowDay = now.get(Calendar.DAY_OF_MONTH);
+
+        if((nowYear < year) ||
+                ((nowYear==year) && ((nowMonth < monthOfYear) ||
+                        (nowMonth == monthOfYear && nowDay < dayOfMonth))
+                )
+                ){
+
+            String date = "You picked the following date: "+dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+            Log.e(TAG, "onDateSet: " + nowMonth );
+            textDate.setText(year + "-" + (monthOfYear+1) + "-" + dayOfMonth);
+        }else{
+            Toast.makeText(getActivity(), "请选择未来的日期！", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
