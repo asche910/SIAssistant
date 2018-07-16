@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:clickable="false"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+       >
+
+        <ImageView
+            android:id="@+id/item_img_home"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"/>
+
+        <!--#3180e9-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="150dp"
+            android:background="@android:color/holo_blue_light"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="Your Goal"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#45144fbc" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="80dp">
+
+                    <TextView
+                        android:id="@+id/item_text_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_toLeftOf="@id/item_text_div"
+                        android:gravity="center_horizontal"
+                        android:text="6"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/item_text_div"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="/"
+                        android:textSize="30sp"
+                        android:textColor="#313233"/>
+
+                    <TextView
+                        android:id="@+id/item_text_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_toRightOf="@id/item_text_div"
+                        android:gravity="bottom"
+                        android:text="99"
+                        android:textSize="30sp" />
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/item_btn_click"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="#1dcf13"
+                    android:text="点击打卡" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

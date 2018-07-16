@@ -4,32 +4,39 @@
     android:layout_height="match_parent"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="5dp"
+    android:paddingTop="24dp"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:gravity="center"
         android:text="新建目标"
         android:textSize="25sp"
-        android:textColor="#7c0ea7"/>
+        android:textColor="#99000000"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#4596a397"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_home_press"/>
+            android:background="@drawable/ic_add_name"/>
 
         <EditText
+            android:id="@+id/edit_add_name"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:hint="赶快输入目标名称名称吧！"
-            android:textColorHint="#0aa31e"/>
+            android:textColorHint="#2e54ec"/>
 
     </LinearLayout>
 
@@ -37,24 +44,28 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_home_press"/>
+            android:background="@drawable/ic_add_days"/>
 
         <EditText
+            android:id="@+id/edit_add_days"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:hint="自定义天数或右方选择"
-            android:textColorHint="#0aa31e"/>
+            android:textColorHint="#2e54ec"
+            android:inputType="number"/>
         <Button
             android:id="@+id/btn_add_sug"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="推荐天数"/>
+            android:layout_marginRight="15dp"
+            android:text="推荐天数"
+            android:background="@android:color/holo_green_light"/>
 
     </LinearLayout>
 
@@ -62,13 +73,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_home_press"/>
+            android:background="@drawable/ic_add_star"/>
 
        <TextView
-           android:id="@+id/text_add_data"
+           android:id="@+id/text_add_date"
            android:layout_width="0dp"
            android:layout_height="40dp"
            android:layout_weight="1"
@@ -76,16 +87,99 @@
            android:layout_gravity="center_vertical"
            android:gravity="center_vertical"
            android:text="开始日期"
-           android:textSize="15sp"
+           android:textSize="20sp"
            android:textColor="#2e54ec"/>
 
         <Button
             android:id="@+id/btn_add_date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选择日期"/>
+            android:layout_height="40dp"
+            android:layout_marginRight="15dp"
+            android:text="选择日期"
+            android:background="@android:color/holo_blue_light"/>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="5dp">
+        <ImageView
+            android:id="@+id/img_add_note"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_add_note"/>
+
+        <EditText
+            android:id="@+id/edit_add_note"
+            android:layout_width="210dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/img_add_note"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:hint="输备注信息！"
+            android:textColorHint="#0aa31e"
+            android:background="@drawable/bg_edit_add_note"/>
+
+        <Button
+            android:id="@+id/btn_add_note"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:background="#110d76bc"
+            android:text="选择图片" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_add_clock"/>
+
+        <TextView
+            android:id="@+id/text_add_clock"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="设置闹钟"
+            android:textSize="20sp"
+            android:textColor="#2e54ec"/>
+
+
+        <Switch
+            android:id="@+id/switch_add_clock"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:checked="false"
+            android:layout_marginRight="20dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="添 加 目 标"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:background="@drawable/bg_btn_add"
+        />
+
+
 
 
 
