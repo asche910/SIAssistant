@@ -2,26 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="24dp"
+    >
 
     <RelativeLayout
-        android:background="@color/hui"
+        android:background="@drawable/tu_2"
         android:layout_width="match_parent"
         android:layout_height="200dp">
         <ImageView
             android:id="@+id/headportrait"
-            android:src="@drawable/head"
             android:layout_width="100dp"
             android:layout_height="100dp" />
         <TextView
             android:id="@+id/name"
+            android:layout_marginLeft="20dp"
             android:text="用户—0omkda"
             android:layout_below="@+id/headportrait"
             android:layout_width="wrap_content"
             android:textColor="@color/colorWhite"
             android:layout_height="30dp" />
         <Button
-            android:layout_marginTop="30dp"
+            android:id="@+id/denglu"
+            android:text="登陆"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_marginTop="70dp"
             android:textColor="@color/colorWhite"
             android:text="注册"
             android:id="@+id/register"
@@ -33,32 +42,82 @@
             android:src="@color/huiblack"
             android:layout_width="match_parent"
             android:layout_height="1dp" />
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:text="已坚持天数"
+            android:padding="20dp"
+            android:layout_below="@id/name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/person_insist"
+            android:text="0"
+            android:padding="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/name"
+            android:layout_marginLeft="300dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/person_insist"
+            android:layout_below="@id/name"
+            android:paddingTop="20dp"
+            android:text="天"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <Button
             android:id="@+id/pressbutton1"
+            android:background="@drawable/pressbutton"
             android:textColor="@color/colorWhite"
-
             android:layout_weight="1"
-            android:text="进行中"
+            android:text="相册"
             android:layout_width="0dp"
             android:layout_height="50dp" />
         <Button
+            android:background="@drawable/pressbutton"
             android:id="@+id/pressbutton2"
-            android:text="已完成"
+            android:text="好友"
             android:textColor="@color/colorWhite"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />
         <Button
+            android:background="@drawable/pressbutton"
+            android:id="@+id/pressbutton3"
             android:layout_weight="1"
-            android:text="未完成"
+            android:text="设置"
             android:textColor="@color/colorWhite"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
     </LinearLayout>
+   <FrameLayout
+       android:id="@+id/personselect"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:id="@+id/photo_main"
+           android:layout_gravity="center"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent" />
+       <android.support.design.widget.FloatingActionButton
+           android:id="@+id/floatButton"
+           android:layout_gravity="bottom|end"
+           android:layout_margin="16dp"
+           android:src="@drawable/xuanfu"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+   </FrameLayout>
 
 
 </LinearLayout>

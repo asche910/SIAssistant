@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -14,7 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,13 +30,20 @@
             android:theme="@style/DialogActivityTheme"/>
 
 
-        <activity android:name=".regster">
+        <activity android:name=".Register">
             <intent-filter>
-                <action android:name="com.example.activity.ACTION_START"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <action android:name="com.example.activity.ACTION_START" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".HotCotentActivity" />
+        <activity android:name=".Account_management" />
+        <activity android:name=".Find_Item_1"/>
+
+
 
         <receiver android:name=".AlarmReceiver"
             android:enabled="true"

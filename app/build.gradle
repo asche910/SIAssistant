@@ -10,13 +10,35 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+    allprojects {
+        repositories {
+            mavenCentral()
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    }
+    dependencies {
+        implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+    }
 }
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -29,6 +51,10 @@ dependencies {
     implementation 'org.litepal.android:core:1.6.1'
     implementation 'com.zhihu.android:matisse:0.5.1'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
+    implementation 'cn.yipianfengye.android:zxing-library:1.5'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

@@ -1,16 +1,23 @@
 package com.sia.siassistant;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,13 +33,18 @@ import static com.sia.siassistant.FragmentNew.goalBeanList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static ViewPager viewPager;
+   // FragmentPerson fragmentPerson=(FragmentPerson) getFragmentManager().findFragmentByTag()
     List<Fragment> fragmentList = new ArrayList<>();
     FragAdapter fragAdapter;
+   // RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
+
 
     //底部Tab标签栏
     RelativeLayout layoutHome, layoutHappen, layoutMessage, layoutPerson;
     ImageView imgHome, imgHappen, imgNew, imgMessage, imgPerson;
     TextView textHome, textHappen, textNew, textMessage, textPerson;
+    //Button button=(Button)findViewById(R.id.addfriend_12);
+
 
 
     //从资源文件获得对应Uri
@@ -44,7 +56,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-
+        final Intent intent=getIntent();
+        String user__name=intent.getStringExtra("extre");
+        Toast.makeText(MainActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+        CheckBox checkBox=(CheckBox)findViewById(R.id.checkBox);
+        Button button=(Button)findViewById(R.id.addfriend_12);
+       // Toolbar toolbar=(Toolbar)findViewById(R.id.toobar);
+        //setSupportActionBar(toolbar);
         //彩色33B5E5
         //原色666363
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -269,5 +287,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onPageScrollStateChanged(int state) {
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar,menu);
+        return true;
     }
 }
