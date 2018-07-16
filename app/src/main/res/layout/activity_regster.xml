@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".regster">
+    tools:context=".Register">
     <TextView
         android:text="请完善您的资料"
         android:textSize="16sp"
@@ -17,8 +17,8 @@
 
       <ImageView
           android:id="@+id/headportait2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_width="70dp"
+          android:layout_height="match_parent" />
         <ImageView
             android:id="@+id/bendixiangche"
             android:src="@drawable/ic_action_name"
@@ -26,5 +26,116 @@
             android:layout_width="70dp"
             android:layout_height="match_parent" />
     </RelativeLayout>
+    <ImageView
+        android:src="@color/huiblack"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/name_1"
+            android:text="用户名:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:textColor="@color/huiblack"
+            android:padding="20dp"
+            android:layout_toRightOf="@id/name_1"
+            android:id="@+id/user_name"
+            android:layout_toLeftOf="@id/regster_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <EditText
+            android:layout_marginRight="60dp"
+            android:id="@+id/regster_name"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="70dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/button_1"
+            android:text="确定"
+            android:layout_alignParentRight="true"
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <ImageView
+        android:src="@color/huiblack"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/job_1"
+            android:text="职业:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/jobname"
+            android:layout_toRightOf="@id/job_1"
+            android:layout_toLeftOf="@id/regster_job"
+            android:textSize="15sp"
+            android:padding="20dp"
+            android:textStyle="italic"
+            android:textColor="@color/huiblack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/regster_job"
+            android:layout_marginRight="60dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="70dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/button_2"
+            android:text="确定"
+            android:layout_alignParentRight="true"
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@color/huiblack"
+            android:layout_below="@id/button_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </RelativeLayout>
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="自定义登陆密码"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:id="@+id/shu_ru_mi_ma"
+        android:hint="请输入密码"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+<Button
+    android:id="@+id/zhuce"
+    android:layout_marginTop="40dp"
+    android:text="注册"
+    android:layout_marginLeft="150dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
 </LinearLayout>

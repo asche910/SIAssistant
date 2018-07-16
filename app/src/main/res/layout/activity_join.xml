@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinActivity">
+    <TextView
+        android:textStyle="italic"
+        android:text="登陆界面"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="46dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/join_username"
+            android:layout_marginTop="200dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="用户名:" />
+        <EditText
+            android:id="@+id/join_name"
+            android:layout_toRightOf="@+id/join_username"
+            android:layout_marginTop="200dp"
+            android:minWidth="24dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/join_code_1"
+            android:gravity="center"
+            android:layout_marginTop="240dp"
+            android:layout_marginLeft="50dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="密码:"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/join_code"
+            android:layout_toRightOf="@id/join_code_1"
+            android:layout_marginTop="240dp"
+            android:minWidth="24dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/join"
+            android:layout_below="@id/join_code"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/button_press_2"
+            android:layout_width="55dp"
+            android:text="登陆"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/out"
+            android:layout_toRightOf="@id/join"
+            android:layout_marginLeft="2dp"
+            android:layout_below="@id/join_code"
+            android:background="@drawable/button_press_2"
+            android:text="退出"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -8,11 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentUnoff extends Fragment {
+public class Xing_Shou_Fragment extends Fragment {
+    View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_unoff,container,false);
-        return  view;
+        view=inflater.inflate(R.layout.xing_shou,container,false);
+        return view;
     }
 }
