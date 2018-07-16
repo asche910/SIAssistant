@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/detail_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxHeight="250dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/bg_3" />
+
+        <TextView
+            android:id="@+id/detail_text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_img"
+            android:layout_margin="10dp"
+            android:text="Hello, World!"
+            android:textSize="20sp"
+            android:textColor="#eeffffff"
+            android:background="#44454545"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/detail_img"
+            android:layout_alignEnd="@id/detail_img"
+            android:background="#44454545">
+
+            <TextView
+                android:id="@+id/detail_text_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="6"
+                android:textSize="40sp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/item_text_div"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textSize="30sp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/detail_text_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:text="99"
+                android:textSize="30sp"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/detail_text_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="Hello, World!Hello, World!"
+        android:textColor="#585757"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/detail_btn_back"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="返回"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="20sp"
+            android:background="#00454545"/>
+
+        <Button
+            android:id="@+id/detail_btn_click"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="打卡"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="20sp"
+            android:background="#00454545"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

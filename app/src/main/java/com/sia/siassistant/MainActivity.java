@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,6 +26,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sia.siassistant.FragmentHappen.str_1;
+import static com.sia.siassistant.FragmentHappen.str_2;
+import static com.sia.siassistant.FragmentNew.goalBeanList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static ViewPager viewPager;
@@ -40,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textHome, textHappen, textNew, textMessage, textPerson;
     //Button button=(Button)findViewById(R.id.addfriend_12);
 
+
+
+    //从资源文件获得对应Uri
+    public static final String ANDROID_RESOURCE = "android.resource://";
+    public static final String FOREWARD_SLASH = "/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgHome.setBackground(getDrawable(R.drawable.ic_home_press));
             textHome.setTextColor(Color.parseColor("#33B5E5"));
         }
+
     }
 
     void init(){
@@ -95,6 +106,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutMessage.setOnClickListener(this);
         layoutPerson.setOnClickListener(this);
         imgNew.setOnClickListener(this);
+
+
+        GoalBean goalBean_1 = new GoalBean("坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0);
+        GoalBean goalBean_2 = new GoalBean("Test Message!", "365", "2018-07-20", str_2, "content://media/external/images/media/835163", "设置闹钟", 0);
+        goalBeanList.add(goalBean_1);
+        goalBeanList.add(goalBean_2);
 
     }
 
@@ -177,6 +194,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
         }
+    }
+
+    private static Uri resourceIdToUri(Context context, int resourceId) {
+        return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
     }
 
     class MyViewPagerListener implements ViewPager.OnPageChangeListener{
