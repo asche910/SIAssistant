@@ -12,10 +12,9 @@ public class GoalBean extends DataSupport implements Serializable{
     private String uri;
     private String clock;
     private int curDay;
+    private boolean isClick;
 
-
-
-    public GoalBean(String name, String days, String start, String note, String uri, String clock, int curDay) {
+    public GoalBean(String name, String days, String start, String note, String uri, String clock, int curDay, boolean isClick) {
         this.name = name;
         this.days = days;
         this.start = start;
@@ -23,6 +22,7 @@ public class GoalBean extends DataSupport implements Serializable{
         this.uri = uri;
         this.clock = clock;
         this.curDay = curDay;
+        this.isClick = isClick;
     }
 
     public String getName() {
@@ -81,4 +81,14 @@ public class GoalBean extends DataSupport implements Serializable{
     public void setCurDay(int curDay) {
         this.curDay = curDay;
     }
+
+
+    public boolean isClick() {
+        return isClick;
+    }
+
+    public void setClick(boolean click) {
+        isClick = click;
+    }
+
 }

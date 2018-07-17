@@ -36,6 +36,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
+import static com.sia.siassistant.MainActivity.alarmManager;
 import static com.sia.siassistant.WheelView.TAG;
 
 public class FragmentNew extends Fragment  implements View.OnClickListener,
@@ -56,7 +57,6 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
     Switch clockSwitch;
 
     //闹钟
-    public static AlarmManager alarmManager;
     public static PendingIntent pendingIntent;
 
     Uri uri;
@@ -83,7 +83,6 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
         editNote = getActivity().findViewById(R.id.edit_add_note);
 
         clockSwitch = getActivity().findViewById(R.id.switch_add_clock);
-        alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
 
         btnSug.setOnClickListener(this);
         btnDate.setOnClickListener(this);
@@ -141,7 +140,7 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
                     editDays.setText("");
                 }
 
-                GoalBean goalBean = new GoalBean(name, days, start, note, uri, clock, 0);
+                GoalBean goalBean = new GoalBean(name, days, start, note, uri, clock, 0, false);
                 goalBeanList.add(goalBean);
 
                 Toast.makeText(getActivity(), "添加成功！", Toast.LENGTH_SHORT).show();

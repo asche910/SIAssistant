@@ -1,5 +1,6 @@
 package com.sia.siassistant;
 
+import android.app.AlarmManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +26,24 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.sia.siassistant.FragmentHappen.str_1;
 import static com.sia.siassistant.FragmentHappen.str_2;
+import static com.sia.siassistant.FragmentHome.clickTable;
 import static com.sia.siassistant.FragmentNew.goalBeanList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -51,6 +67,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String ANDROID_RESOURCE = "android.resource://";
     public static final String FOREWARD_SLASH = "/";
 
+    //闹钟放入此处初始化
+    public static AlarmManager alarmManager;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        for(GoalBean goalBean: goalBeanList){
+            goalBean.save();
+        }
+
+        saveToSD(clickTable);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(MainActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
         CheckBox checkBox=(CheckBox)findViewById(R.id.checkBox);
         Button button=(Button)findViewById(R.id.addfriend_12);
-       // Toolbar toolbar=(Toolbar)findViewById(R.id.toobar);
-        //setSupportActionBar(toolbar);
+
         //彩色33B5E5
         //原色666363
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -73,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     void init(){
+
+        clickTable =  retriveFromSD();
+
+
         fragmentList.add(new FragmentHome());
         fragmentList.add(new FragmentHappen());
         fragmentList.add(new FragmentNew());
@@ -107,11 +140,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutPerson.setOnClickListener(this);
         imgNew.setOnClickListener(this);
 
-
-        GoalBean goalBean_1 = new GoalBean("坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0);
-        GoalBean goalBean_2 = new GoalBean("Test Message!", "365", "2018-07-20", str_2, "content://media/external/images/media/835163", "设置闹钟", 0);
+//        DataSupport.deleteAll("GoalBean");
+        goalBeanList = DataSupport.findAll(GoalBean.class);
+/*
+        GoalBean goalBean_1 = new GoalBean("坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0, false);
+        GoalBean goalBean_2 = new GoalBean("Test Message!", "365", "2018-07-20", str_2, resourceIdToUri(getApplicationContext(), R.drawable.bg_4_home).toString(), "设置闹钟", 0, false);
         goalBeanList.add(goalBean_1);
         goalBeanList.add(goalBean_2);
+        goalBean_1.save();
+        goalBean_2.save();*/
+
+
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
 
     }
 
@@ -196,8 +237,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private static Uri resourceIdToUri(Context context, int resourceId) {
+    public static Uri resourceIdToUri(Context context, int resourceId) {
         return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
+    }
+
+    public static  void saveToSD(int[][] a){
+        File file = new File(Environment.getExternalStorageDirectory().getPath() + "/ArrayData.txt");
+        try {
+            OutputStream out = new FileOutputStream(file);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+
+            for (int i = 0; i < 12; i++) {
+                for (int j = 0; j < 32; j++) {
+                    writer.write(a[i][j] + " ");
+                }
+                writer.newLine();
+            }
+            writer.flush();
+            writer.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            Log.e("aaa", "saveToSD: --------------->" );
+        }
+
+    }
+
+    public static int[][] retriveFromSD(){
+        int[][] b = new int[12][32];
+        //读取
+        try {
+            InputStream in = new FileInputStream(Environment.getExternalStorageDirectory().getPath() + "/ArrayData.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+            String line;
+            int i = 0;
+            while ((line = reader.readLine()) != null) {
+                String[] strs = line.split(" ");
+                for (int j = 0; j < 32; j++) {
+                    b[i][j] = Integer.parseInt(strs[j].trim());
+                }
+                i++;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("aaa", "retriveFromSD: --------------------->" );
+        }
+        return b;
     }
 
     class MyViewPagerListener implements ViewPager.OnPageChangeListener{
