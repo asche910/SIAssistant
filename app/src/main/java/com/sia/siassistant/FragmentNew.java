@@ -30,10 +30,12 @@ import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 
 import java.io.FileNotFoundException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import static android.app.Activity.RESULT_OK;
 import static com.sia.siassistant.MainActivity.alarmManager;
@@ -47,7 +49,12 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
     private final int[] DAYS_NUM = new int[]{3, 7, 21, 30, 100, 365, 9999};
     private int dayIndex = -1;
 
+
+    //须本地化存储的变量
     public static List<GoalBean> goalBeanList = new ArrayList<>();
+    public static List<AlarmBean> alarmBeanList = new ArrayList<>();
+
+
 
     Button btnSug, btnDate, btnNote, btnAdd;
     EditText editName, editDays, editNote;
@@ -70,6 +77,7 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         btnSug = getActivity().findViewById(R.id.btn_add_sug);
         btnDate = getActivity().findViewById(R.id.btn_add_date);
@@ -101,7 +109,7 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
                     Calendar now = Calendar.getInstance();
                     TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(
                             FragmentNew.this,
-                            now.get(Calendar.HOUR),
+                            now.get(Calendar.HOUR_OF_DAY),
                             now.get(Calendar.MINUTE),
                             true
                     );
@@ -268,7 +276,7 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
         Calendar c=Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY,hourOfDay);
         c.set(Calendar.MINUTE,minute);
-        c.set(Calendar.SECOND, minute);
+        c.set(Calendar.SECOND, second);
 
         String time = String.format("%02d:%02d", hourOfDay, minute);
         textClock.setText(time);
@@ -276,10 +284,14 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
         Log.e(TAG, "onTimeSet:  setTime " + time );
 
         Intent intent = new Intent("com.sia.siassistant.alarm");
-//        intent.setAction("com.sia.siassistant.alarm");
         intent.setComponent(new ComponentName("com.sia.siassistant", "com.sia.siassistant.AlarmReceiver"));
 
-        pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
+        Random random = new Random(System.currentTimeMillis());
+        int id = random.nextInt();
+
+        alarmBeanList.add(new AlarmBean(id, time, "1111111", true));
+
+        pendingIntent = PendingIntent.getBroadcast(getContext(), id, intent, 0);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 24*60*60*1000 , pendingIntent);
 
 

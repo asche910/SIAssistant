@@ -148,17 +148,20 @@ public class FragmentHome extends Fragment implements TimePickerDialog.OnTimeSet
         btnFloating.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ActivityAlarm.class);
+                startActivity(intent);
+
+/*
                 Calendar now = Calendar.getInstance();
                 TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(
                         FragmentHome.this,
-                        now.get(Calendar.HOUR),
+                        now.get(Calendar.HOUR_OF_DAY),
                         now.get(Calendar.MINUTE),
                         true
                 );
                 timePickerDialog.show(getActivity().getFragmentManager(), "TimePickerDialog");
-/*
-                Intent intent = new Intent(getContext(), ActivityAlarm.class);
-                startActivity(intent);*/
+*/
+
 
             }
         });
@@ -169,7 +172,8 @@ public class FragmentHome extends Fragment implements TimePickerDialog.OnTimeSet
         Calendar c=Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY,hourOfDay);
         c.set(Calendar.MINUTE,minute);
-        c.set(Calendar.SECOND, minute);
+        c.set(Calendar.SECOND, second);
+
 
 //        Log.e(WheelView.TAG, "onTimeSet:  setTime " + time );
 

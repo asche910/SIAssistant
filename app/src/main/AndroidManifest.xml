@@ -25,11 +25,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ActivityAlarm"
+        <activity android:name=".ActivityAlarming"
             android:theme="@style/DialogActivityTheme" />
 
         <activity android:name=".ActivityDetail"
             android:theme="@style/DialogActivityTheme"/>
+
+        <activity android:name=".ActivityAlarmDetail"
+            android:theme="@style/DialogActivityTheme"/>
+
+        <activity android:name=".ActivityAlarm"/>
+
 
 
         <activity android:name=".Register">

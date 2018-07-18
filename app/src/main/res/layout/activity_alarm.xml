@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="24dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_above="@+id/clock"
-        android:layout_centerHorizontal="true"
-        android:text="打卡签到啦！！！"
-        android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="闹钟列表"
+        android:textSize="25sp"
+        android:textColor="#cc000000"/>
 
-    <ImageView
-        android:id="@+id/clock"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/clock"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#4596a397"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
 
     <Button
-        android:id="@+id/btn_stop_alarm"
+        android:id="@+id/alarm_btn_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="Stop"
-        android:background="#23b163"
-        android:layout_below="@+id/clock"/>
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="添加闹钟"
+        android:textAllCaps="false"
+        android:background="#21b1e1" />
 
-</RelativeLayout>
+</LinearLayout>

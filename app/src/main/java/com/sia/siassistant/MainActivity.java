@@ -1,7 +1,9 @@
 package com.sia.siassistant;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -39,12 +41,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static com.sia.siassistant.FragmentHappen.str_1;
 import static com.sia.siassistant.FragmentHappen.str_2;
 import static com.sia.siassistant.FragmentHome.clickTable;
+import static com.sia.siassistant.FragmentNew.alarmBeanList;
 import static com.sia.siassistant.FragmentNew.goalBeanList;
+import static com.sia.siassistant.FragmentNew.pendingIntent;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
 
+//        DataSupport.deleteAll("GoalBean");
         for(GoalBean goalBean: goalBeanList){
             goalBean.save();
         }
@@ -103,8 +109,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void init(){
 
-        clickTable =  retriveFromSD();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                clickTable =  retriveFromSD();
+                alarmLogic();
+            }
+        }).start();
+
+
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         fragmentList.add(new FragmentHome());
         fragmentList.add(new FragmentHappen());
@@ -142,16 +157,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //        DataSupport.deleteAll("GoalBean");
         goalBeanList = DataSupport.findAll(GoalBean.class);
-/*
-        GoalBean goalBean_1 = new GoalBean("坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0, false);
+
+    /*    GoalBean goalBean_1 = new GoalBean("坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0, false);
         GoalBean goalBean_2 = new GoalBean("Test Message!", "365", "2018-07-20", str_2, resourceIdToUri(getApplicationContext(), R.drawable.bg_4_home).toString(), "设置闹钟", 0, false);
         goalBeanList.add(goalBean_1);
         goalBeanList.add(goalBean_2);
         goalBean_1.save();
-        goalBean_2.save();*/
+        goalBean_2.save();
+*/
 
+        AlarmBean alarmBean_1 = new AlarmBean(11, "08:15", "1111111", false);
+        AlarmBean alarmBean_2 = new AlarmBean(22, "20:30", "1111111", false);
+        alarmBeanList.add(alarmBean_1);
+        alarmBeanList.add(alarmBean_2);
 
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 
     }
@@ -286,6 +305,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.e("aaa", "retriveFromSD: --------------------->" );
         }
         return b;
+    }
+
+    public static void alarmLogic(){
+        for(AlarmBean alarmBean: alarmBeanList){
+            if(alarmBean.isOn()){
+                Intent intent = new Intent("com.sia.siassistant.alarm");
+                intent.setComponent(new ComponentName("com.sia.siassistant", "com.sia.siassistant.AlarmReceiver"));
+
+                pendingIntent = PendingIntent.getBroadcast(MyApplication.getContext(), alarmBean.getId(), intent, 0);
+                for(int i = 0; i < 7; i++){
+                    int n = Integer.parseInt(alarmBean.getDays().charAt(i) + "");
+                    Calendar now = Calendar.getInstance();
+
+                    if(i == now.get(Calendar.DAY_OF_WEEK)-1){
+                        if(n == 0){
+                            alarmManager.cancel(pendingIntent);
+                        }else{
+                            now.set(Calendar.HOUR_OF_DAY, Integer.parseInt(alarmBean.getTime().substring(0, 2)));
+                            now.set(Calendar.MINUTE, Integer.parseInt(alarmBean.getTime().substring(3, 5)));
+
+                            alarmManager.setRepeating(
+                                    AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), 24*60*60*1000 , pendingIntent);
+                        }
+                    }
+
+                }
+
+            }
+        }
     }
 
     class MyViewPagerListener implements ViewPager.OnPageChangeListener{
