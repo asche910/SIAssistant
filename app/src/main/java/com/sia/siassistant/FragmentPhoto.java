@@ -51,6 +51,7 @@ public class FragmentPhoto extends Fragment implements View.OnClickListener {
         take_photo.setOnClickListener(this);
         recyclerView = (view).findViewById(R.id.recclerview_photo);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
         PhotoAdapter photoAdapter = new PhotoAdapter(photo_itemList);
         recyclerView.setAdapter(photoAdapter);
@@ -149,6 +150,12 @@ public class FragmentPhoto extends Fragment implements View.OnClickListener {
         else {
             Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        //photo_itemList.add(new Photo_item(bitmap));
     }
 }
 
