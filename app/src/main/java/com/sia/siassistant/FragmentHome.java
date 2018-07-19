@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import static android.support.constraint.Constraints.TAG;
 import static com.sia.siassistant.FragmentNew.goalBeanList;
@@ -133,7 +134,7 @@ public class FragmentHome extends Fragment implements TimePickerDialog.OnTimeSet
                     @Override
                     public void run() {
 
-                        GoalBean goalBean = new GoalBean("Test No." + newGoalBeanIndex, "365", "2018-07-20", "Tes Tes Test!", resourceIdToUri(getActivity(), R.drawable.bg_4_home).toString(), "设置闹钟", 0, false);
+                        GoalBean goalBean = new GoalBean(new Random(System.currentTimeMillis()).nextInt(), "Test No." + newGoalBeanIndex, "365", "2018-07-20", "Tes Tes Test!", resourceIdToUri(getActivity(), R.drawable.bg_4_home).toString(), "设置闹钟", 0, false);
                         goalBeanList.add(goalBean);
                         newGoalBeanIndex++;
 

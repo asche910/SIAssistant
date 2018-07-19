@@ -43,6 +43,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import static com.sia.siassistant.FragmentHappen.str_1;
 import static com.sia.siassistant.FragmentHappen.str_2;
@@ -79,9 +80,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
 
-//        DataSupport.deleteAll("GoalBean");
+        //删除goalBeanList中已删除但数据库中仍存在的Item
+        List<GoalBean> tempGoalList = DataSupport.findAll(GoalBean.class);
         for(GoalBean goalBean: goalBeanList){
             goalBean.save();
+        }
+        for (GoalBean bean: tempGoalList) {
+            boolean flag = false;
+            for(GoalBean goalBean: goalBeanList){
+                if(bean.getItem_id() == goalBean.getItem_id()){
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag){
+                bean.delete();
+            }
+        }
+
+
+
+        //删除alarmBeanList中已删除但数据库中仍存在的Item
+        List<AlarmBean> tempAlarmList = DataSupport.findAll(AlarmBean.class);
+
+        for(AlarmBean alarmBean: alarmBeanList){
+            alarmBean.save();
+        }
+        for (AlarmBean bean: tempAlarmList) {
+            boolean flag = false;
+            for(AlarmBean alarmBean: alarmBeanList){
+                if(bean.getId() == alarmBean.getId()){
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag){
+                bean.delete();
+            }
         }
 
         saveToSD(clickTable);
@@ -156,21 +191,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgNew.setOnClickListener(this);
 
 //        DataSupport.deleteAll("GoalBean");
+//        LitePal.getDatabase();
         goalBeanList = DataSupport.findAll(GoalBean.class);
 
-    /*    GoalBean goalBean_1 = new GoalBean("坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0, false);
-        GoalBean goalBean_2 = new GoalBean("Test Message!", "365", "2018-07-20", str_2, resourceIdToUri(getApplicationContext(), R.drawable.bg_4_home).toString(), "设置闹钟", 0, false);
-        goalBeanList.add(goalBean_1);
-        goalBeanList.add(goalBean_2);
-        goalBean_1.save();
-        goalBean_2.save();
-*/
+        if (goalBeanList.isEmpty()) {
+            GoalBean goalBean_1 = new GoalBean(new Random(System.currentTimeMillis()).nextInt(), "坚持跑步", "100", "2018-07-11", str_1, resourceIdToUri(getApplicationContext(), R.drawable.bg_2).toString(), "设置闹钟", 0, false);
+            GoalBean goalBean_2 = new GoalBean(new Random(System.currentTimeMillis()).nextInt(), "Test Message!", "365", "2018-07-20", str_2, resourceIdToUri(getApplicationContext(), R.drawable.bg_4_home).toString(), "设置闹钟", 0, false);
+            goalBeanList.add(goalBean_1);
+            goalBeanList.add(goalBean_2);
+            goalBean_1.save();
+            goalBean_2.save();
+        }
 
-        AlarmBean alarmBean_1 = new AlarmBean(11, "08:15", "1111111", false);
-        AlarmBean alarmBean_2 = new AlarmBean(22, "20:30", "1111111", false);
-        alarmBeanList.add(alarmBean_1);
-        alarmBeanList.add(alarmBean_2);
+        alarmBeanList = DataSupport.findAll(AlarmBean.class);
 
+        if (alarmBeanList.isEmpty()) {
+            AlarmBean alarmBean_1 = new AlarmBean(11, "08:15", "1111111", false);
+            AlarmBean alarmBean_2 = new AlarmBean(22, "20:30", "1111111", false);
+            alarmBeanList.add(alarmBean_1);
+            alarmBeanList.add(alarmBean_2);
+        }
 
 
     }

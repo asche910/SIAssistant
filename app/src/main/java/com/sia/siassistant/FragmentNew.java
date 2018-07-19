@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Random;
 
 import static android.app.Activity.RESULT_OK;
+import static com.sia.siassistant.MainActivity.alarmLogic;
 import static com.sia.siassistant.MainActivity.alarmManager;
 import static com.sia.siassistant.WheelView.TAG;
 
@@ -148,7 +149,7 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
                     editDays.setText("");
                 }
 
-                GoalBean goalBean = new GoalBean(name, days, start, note, uri, clock, 0, false);
+                GoalBean goalBean = new GoalBean(new Random(System.currentTimeMillis()).nextInt(), name, days, start, note, uri, clock, 0, false);
                 goalBeanList.add(goalBean);
 
                 Toast.makeText(getActivity(), "添加成功！", Toast.LENGTH_SHORT).show();
@@ -283,16 +284,17 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
 
         Log.e(TAG, "onTimeSet:  setTime " + time );
 
-        Intent intent = new Intent("com.sia.siassistant.alarm");
-        intent.setComponent(new ComponentName("com.sia.siassistant", "com.sia.siassistant.AlarmReceiver"));
+//        Intent intent = new Intent("com.sia.siassistant.alarm");
+//        intent.setComponent(new ComponentName("com.sia.siassistant", "com.sia.siassistant.AlarmReceiver"));
 
         Random random = new Random(System.currentTimeMillis());
         int id = random.nextInt();
 
         alarmBeanList.add(new AlarmBean(id, time, "1111111", true));
 
-        pendingIntent = PendingIntent.getBroadcast(getContext(), id, intent, 0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 24*60*60*1000 , pendingIntent);
+        alarmLogic();
+//        pendingIntent = PendingIntent.getBroadcast(getContext(), id, intent, 0);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 24*60*60*1000 , pendingIntent);
 
 
     }

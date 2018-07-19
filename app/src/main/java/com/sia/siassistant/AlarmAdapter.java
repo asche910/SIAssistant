@@ -75,6 +75,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
                     }else{
                         alarmBean.setOn(false);
                     }
+                    MainActivity.alarmLogic();
                 }
             }
         });
