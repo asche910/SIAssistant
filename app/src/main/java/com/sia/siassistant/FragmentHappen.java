@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.sia.siassistant.MainActivity.resourceIdToUri;
+import static com.sia.siassistant.FragmentNew.goalBeanList;
 
 public class FragmentHappen extends Fragment {
 
@@ -56,7 +57,6 @@ public class FragmentHappen extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_happen, container, false );
     }
 

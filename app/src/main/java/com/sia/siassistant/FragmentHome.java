@@ -74,9 +74,8 @@ public class FragmentHome extends Fragment implements TimePickerDialog.OnTimeSet
 
         recyclerViewHome = getActivity().findViewById(R.id.recyclerview_home);
         layoutManager = new LinearLayoutManager(getContext());
+
         homeAdapter = new HomeAdapter(goalBeanList);
-
-
         recyclerViewHome.setLayoutManager(layoutManager);
         recyclerViewHome.setAdapter(homeAdapter);
 

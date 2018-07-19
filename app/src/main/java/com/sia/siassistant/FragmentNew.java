@@ -165,7 +165,7 @@ public class FragmentNew extends Fragment  implements View.OnClickListener,
                 break;
             case R.id.btn_add_note:
                 //FragmentNew.this与getActivity()有区别
-                Matisse.from(FragmentNew.this)
+          /*---*/      Matisse.from(FragmentNew.this)
                         .choose(MimeType.ofAll())
                         .countable(true)
                         .maxSelectable(1)

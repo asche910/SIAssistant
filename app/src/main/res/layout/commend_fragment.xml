@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <RelativeLayout
+           android:background="@drawable/bg_btn_add"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_width="match_parent"
+           android:layout_height="140dp">
+           <ImageView
+               android:id="@+id/commend_image_1"
+               android:layout_width="250dp"
+               android:layout_height="wrap_content" />
+           <TextView
+               android:background="@drawable/bg_btn_add"
+               android:layout_marginRight="3dp"
+               android:text="早起早睡,10点前睡觉"
+               android:textSize="20sp"
+               android:layout_toRightOf="@id/commend_image_1"
+               android:layout_width="match_parent"
+               android:layout_height="80dp" />
+           <Button
+               android:text="添加"
+               android:id="@+id/commend_button_1"
+               android:background="@drawable/pressbutton"
+               android:layout_marginTop="80dp"
+               android:layout_toRightOf="@id/commend_image_1"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent" />
+
+       </RelativeLayout>
+       <RelativeLayout
+           android:layout_marginTop="10dp"
+           android:background="@drawable/bg_btn_add"
+           android:layout_marginRight="5dp"
+           android:layout_marginLeft="5dp"
+           android:layout_width="match_parent"
+           android:layout_height="140dp">
+           <ImageView
+               android:id="@+id/commend_image_2"
+               android:layout_width="250dp"
+               android:layout_height="140dp" />
+           <TextView
+               android:layout_marginRight="3dp"
+               android:textSize="20sp"
+               android:text="每天学习8小时"
+               android:layout_toRightOf="@id/commend_image_2"
+               android:layout_width="match_parent"
+               android:layout_height="80dp" />
+           <Button
+               android:id="@+id/commend_button_2"
+               android:layout_toRightOf="@id/commend_image_2"
+               android:layout_marginTop="80dp"
+               android:background="@drawable/pressbutton"
+               android:text="添加"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent" />
+
+       </RelativeLayout>
+   </LinearLayout>
+</ScrollView>

@@ -102,7 +102,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/G:/android/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_near_me_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/G:/android/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_circle_outline_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -112,10 +112,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
-                            <entry key="color" value="9a929a" />
+                            <entry key="color" value="4d9a96" />
                             <entry key="opacityPercent" value="63" />
-                            <entry key="outputName" value="ic_near_me_black_24dp" />
+                            <entry key="outputName" value="ic_add_circle_outline_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\tuao" />
                           </map>
                         </option>

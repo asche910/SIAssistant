@@ -130,8 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Intent intent=getIntent();
         String user__name=intent.getStringExtra("extre");
         Toast.makeText(MainActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-        CheckBox checkBox=(CheckBox)findViewById(R.id.checkBox);
-        Button button=(Button)findViewById(R.id.addfriend_12);
+
+
 
         //彩色33B5E5
         //原色666363
