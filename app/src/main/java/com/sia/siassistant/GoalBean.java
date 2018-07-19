@@ -5,6 +5,7 @@ import org.litepal.crud.DataSupport;
 import java.io.Serializable;
 
 public class GoalBean extends DataSupport implements Serializable{
+    private int item_id;
     private String name;
     private String days;
     private String start;
@@ -12,10 +13,10 @@ public class GoalBean extends DataSupport implements Serializable{
     private String uri;
     private String clock;
     private int curDay;
+    private boolean isClick;
 
-
-
-    public GoalBean(String name, String days, String start, String note, String uri, String clock, int curDay) {
+    public GoalBean(int item_id, String name, String days, String start, String note, String uri, String clock, int curDay, boolean isClick) {
+        this.item_id = item_id;
         this.name = name;
         this.days = days;
         this.start = start;
@@ -23,6 +24,15 @@ public class GoalBean extends DataSupport implements Serializable{
         this.uri = uri;
         this.clock = clock;
         this.curDay = curDay;
+        this.isClick = isClick;
+    }
+
+    public int getItem_id() {
+        return item_id;
+    }
+
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
 
     public String getName() {
@@ -81,4 +91,14 @@ public class GoalBean extends DataSupport implements Serializable{
     public void setCurDay(int curDay) {
         this.curDay = curDay;
     }
+
+
+    public boolean isClick() {
+        return isClick;
+    }
+
+    public void setClick(boolean click) {
+        isClick = click;
+    }
+
 }

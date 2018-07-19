@@ -14,13 +14,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.io.FileNotFoundException;
+import java.util.Calendar;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
+import static com.sia.siassistant.FragmentHome.clickTable;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
@@ -28,7 +31,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private Context context;
     private OnItemClickListener onItemClickListener;
 
-//    static int bgIndex = 0;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -107,14 +109,43 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.textNum.setText(goalBean.getCurDay() + "");
         holder.textDays.setText("" + goalBean.getDays());
 
+        if(goalBean.isClick()){
+            holder.btnClick.setText("打卡成功！");
+            holder.btnClick.setTextColor(Color.WHITE);
+            holder.btnClick.setBackgroundColor(Color.parseColor("#FF0661FF"));
+        }
+
         holder.btnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goalBean.setCurDay(goalBean.getCurDay() + 1);
-                holder.btnClick.setText("打卡成功！");
-                holder.btnClick.setTextColor(Color.WHITE);
-                holder.btnClick.setBackgroundColor(Color.parseColor("#FF0661FF"));
-                onBindViewHolder(holder, position);
+
+                Calendar nowTime = Calendar.getInstance();
+                if (clickTable[nowTime.get(Calendar.MONTH)][nowTime.get(Calendar.DAY_OF_MONTH)] != 1){
+                    goalBean.setClick(false);
+                }
+
+                if (!goalBean.isClick()) {
+                    goalBean.setCurDay(goalBean.getCurDay() + 1);
+                    holder.btnClick.setText("打卡成功！");
+                    holder.btnClick.setTextColor(Color.WHITE);
+                    holder.btnClick.setBackgroundColor(Color.parseColor("#FF0661FF"));
+//                    notifyDataSetChanged();
+                    notifyItemChanged(position);
+
+                    Toast.makeText(context, "打卡成功！", Toast.LENGTH_SHORT).show();
+                    goalBean.setClick(true);
+
+                    Calendar now = Calendar.getInstance();
+                    clickTable[now.get(Calendar.MONTH)][now.get(Calendar.DAY_OF_MONTH)] = 1;
+
+                }else{
+                    Calendar now = Calendar.getInstance();
+
+                    int hour = 23 - now.get(Calendar.HOUR_OF_DAY);
+                    int minute = 60 - now.get(Calendar.MINUTE);
+                    Toast.makeText(context, "距离下次打卡还有" + hour + "小时" + minute + "分钟", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -124,8 +155,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             holder.itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Log.e(TAG, "onClick: +++++++++++++++++++>" );
                     onItemClickListener.onItemClick(position);
+                }
+            });
+
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    onItemClickListener.onItemLongClick(position);
+                    return true;
                 }
             });
         }
@@ -140,10 +178,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+        void onItemLongClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-        Log.e(TAG, "setOnItemClickListener: ----------> " );
+//        Log.e(TAG, "setOnItemClickListener: ----------> " );
         this.onItemClickListener = onItemClickListener;
     }
 

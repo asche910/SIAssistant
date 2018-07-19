@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.sia.siassistant.Text.MyDatabase;
 
+import java.util.Random;
+
 import static com.sia.siassistant.FragmentNew.goalBeanList;
 import static com.sia.siassistant.MainActivity.resourceIdToUri;
 
@@ -63,7 +65,8 @@ public class Commend_fragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.commend_button_1: if (recommend_button_1.getText().toString()=="已添加"){break;} else{goalBeanList.add(new GoalBean("早睡早起","365","0","", resourceIdToUri(getActivity().getApplicationContext(), R.drawable.bg_1).toString(),"设置闹钟",0));
+
+            case R.id.commend_button_1: if (recommend_button_1.getText().toString()=="已添加"){break;} else{ goalBeanList.add(new GoalBean(new Random(System.currentTimeMillis()).nextInt(),"早睡早起","365","2017-06-26","", resourceIdToUri(getActivity().getApplicationContext(), R.drawable.bg_1).toString(),"设置闹钟",0, false));
                 Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();editor.putString("button1","已添加");editor.apply();
                 new Thread(new Runnable() {
                     @Override
@@ -71,11 +74,12 @@ public class Commend_fragment extends Fragment implements View.OnClickListener{
                         Message message=new Message();
                         message.what=1;
                         handler.sendMessage(message);
+                   
 
                     }
                 }).start();break;}
             case R.id.commend_button_2: if (recommend_button_2.getText().toString()=="已添加"){break;}else{editor.putString("button2","已添加");editor.apply();
-                Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();goalBeanList.add(new GoalBean("坚持学习","365","now","学习永无止境",resourceIdToUri(getActivity().getApplicationContext(),R.drawable.bg_2).toString(),"设置闹钟",0));
+                Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();goalBeanList.add(new GoalBean(new Random(System.currentTimeMillis()).nextInt() , "坚持学习","365","2018-07-22","学习永无止境",resourceIdToUri(getActivity().getApplicationContext(),R.drawable.bg_2).toString(),"设置闹钟",0, false));
 new Thread(new Runnable() {
     @Override
     public void run() {
