@@ -57,9 +57,8 @@ public class FragmentHome extends Fragment {
 
         recyclerViewHome = getActivity().findViewById(R.id.recyclerview_home);
         layoutManager = new LinearLayoutManager(getContext());
+
         homeAdapter = new HomeAdapter(goalBeanList);
-
-
         recyclerViewHome.setLayoutManager(layoutManager);
         recyclerViewHome.setAdapter(homeAdapter);
 

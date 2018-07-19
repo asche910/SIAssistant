@@ -27,8 +27,7 @@
             <ImageView
                 android:id="@+id/find_1"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:src="@drawable/find_1" />
+                android:layout_height="150dp" />
 
 
 
@@ -41,6 +40,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_2"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
                 android:layout_height="100dp">
 
             </android.support.v7.widget.RecyclerView>
@@ -50,13 +50,18 @@
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="45dp" />
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swip_refresh"
+                android:layout_width="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_height="2100dp">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="2100dp">
 
             </android.support.v7.widget.RecyclerView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
 

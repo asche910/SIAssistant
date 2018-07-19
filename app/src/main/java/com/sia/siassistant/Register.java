@@ -27,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.sia.siassistant.FragmentPerson.headportrait;
+
 public class Register extends AppCompatActivity implements View.OnClickListener {
     public static final int CHOOSE_PHOTO = 2;
     public static final int TAKE_PHOTO=1;
@@ -41,6 +43,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
    public String username,jobname;
    public SharedPreferences pref;
    public SharedPreferences.Editor editor;
+   public Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +106,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 editor.putString("mima",mima);
                 username=editText_1.getText().toString();editor.putString("user_name",username);editor.apply();
                Intent intent=new Intent(Register.this,MainActivity.class);
-               /*---*/ Intent intent2=new Intent("REGISTER");intent2.putExtra("refrechtext",username);sendBroadcast(intent2);
+               /*---*/ Intent intent2=new Intent("REGISTER");intent2.putExtra("refrechtext",username);
                intent.putExtra("extre",username);
                 startActivity(intent);break;
+
         }
     }
     //private void SendMessege(){
@@ -115,7 +119,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
        // startActivity(intent);
   //  }
 
-    private void openAlbum() {
+     public void openAlbum() {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
         startActivityForResult(intent, CHOOSE_PHOTO);
@@ -191,8 +195,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
     private void displayImage(String imagePath){
         if (imagePath!=null){
-            Bitmap bitmap= BitmapFactory.decodeFile(imagePath);
+             bitmap= BitmapFactory.decodeFile(imagePath);
             picture.setImageBitmap(bitmap);
+
+
         }
         else {
             Toast.makeText(this,"failed",Toast.LENGTH_SHORT).show();

@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -22,15 +25,18 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class FragmentPerson extends Fragment implements View.OnClickListener {
     private Button join;
     FrameLayout frameLayout;
-    public ImageView headportrait,imageView_1;
+    int IMAGE_REFRESH=5;
+    public ImageView imageView_1;
+    public static CircleImageView headportrait;
     public Button register;
     public TextView name;
     private FloatingActionButton floatingActionButton;
   private   MyBoardCasst myBoardCasst=new MyBoardCasst();
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -123,7 +129,7 @@ public class FragmentPerson extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
       switch (v.getId()){
           case R.id.pressbutton1:imageView_1.setImageDrawable(null); replaceFragment(new FragmentPhoto());break;
-          case R.id.pressbutton2: imageView_1.setImageDrawable(null);replaceFragment(new GoodFriend());break;
+          case R.id.pressbutton2: imageView_1.setImageDrawable(null);replaceFragment(new Commend_fragment());break;
           case R.id.pressbutton3: imageView_1.setImageDrawable(null);replaceFragment(new FragmentSet());break;
           default:break;
       }

@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:text="我的相册"
         android:textSize="20sp"
@@ -11,14 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gif_1"
-        android:src="@drawable/gif_2"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recclerview_photo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp">
 
-
-
+    </android.support.v7.widget.RecyclerView>
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:text="拍照"
+        android:id="@+id/take_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 

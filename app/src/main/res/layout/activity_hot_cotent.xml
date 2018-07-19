@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="false"
+    android:focusable="false"
+    android:paddingTop="24dp"
     tools:context=".HotCotentActivity">
     <LinearLayout
         android:orientation="vertical"
@@ -93,14 +96,35 @@
             android:layout_height="30dp" />
 
 </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+
     <TextView
         android:layout_marginTop="10dp"
         android:text="评论:"
         android:textStyle="italic"
         android:layout_marginLeft="15dp"
         android:textSize="15sp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+
+            <EditText
+                android:id="@+id/pinlun_edittext"
+                android:layout_marginLeft="50dp"
+                android:gravity="bottom"
+                android:layout_width="250dp"
+                android:maxLines="2"
+                android:layout_height="50dp" />
+            <Button
+                android:layout_alignParentRight="true"
+                android:text="发布"
+                android:id="@+id/fabu"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+        </RelativeLayout>
         <TextView
             android:id="@+id/pinglun_kuang"
             android:layout_width="match_parent"

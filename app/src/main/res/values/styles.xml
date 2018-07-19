@@ -6,7 +6,6 @@
         <item name="colorPrimary">#f5333131</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">#FFFFFF</item>
     </style>
 
     <style name="DialogActivityTheme" parent="@android:style/Theme.DeviceDefault.Light.Dialog">

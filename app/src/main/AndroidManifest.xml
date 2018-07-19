@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sia.siassistant">
 
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,6 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,14 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ActivityAlarm"
+        <activity
+            android:name=".ActivityAlarm"
             android:theme="@style/DialogActivityTheme" />
-
-        <activity android:name=".ActivityDetail"
-            android:theme="@style/DialogActivityTheme"/>
-
-
+        <activity
+            android:name=".ActivityDetail"
+            android:theme="@style/DialogActivityTheme" />
         <activity android:name=".Register">
             <intent-filter>
                 <action android:name="com.example.activity.ACTION_START" />
@@ -37,21 +36,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".JoinActivity" />
         <activity android:name=".HotCotentActivity" />
-        <activity android:name=".Account_management" />
-        <activity android:name=".Find_Item_1"/>
 
-
-
-        <receiver android:name=".AlarmReceiver"
+        <receiver
+            android:name=".AlarmReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.sia.siassistant.alarm"/>
+                <action android:name="com.sia.siassistant.alarm" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".Find_Item"></activity>
     </application>
 
 </manifest>

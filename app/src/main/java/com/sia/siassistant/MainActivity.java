@@ -59,8 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Intent intent=getIntent();
         String user__name=intent.getStringExtra("extre");
         Toast.makeText(MainActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-        CheckBox checkBox=(CheckBox)findViewById(R.id.checkBox);
-        Button button=(Button)findViewById(R.id.addfriend_12);
+
        // Toolbar toolbar=(Toolbar)findViewById(R.id.toobar);
         //setSupportActionBar(toolbar);
         //彩色33B5E5
@@ -196,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private static Uri resourceIdToUri(Context context, int resourceId) {
+    public static Uri resourceIdToUri(Context context, int resourceId) {
         return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
     }
 
